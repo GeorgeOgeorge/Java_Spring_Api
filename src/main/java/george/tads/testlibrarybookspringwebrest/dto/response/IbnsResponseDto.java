@@ -21,8 +21,8 @@ public class IbnsResponseDto extends RepresentationModel<IbnsResponseDto> {
         this.publisher = ibns.getPublisher();
 
         this.add(linkTo(IbnsController.class).slash(ibns.getId()).withSelfRel());
-        this.add(linkTo(IbnsController.class).slash("/edit/" + ibns.getId()).withRel("edit ibns"));
-        this.add(linkTo(IbnsController.class).slash("/delete/" + ibns.getId()).withRel("delete ibns"));
+        this.add(linkTo(IbnsController.class).slash(ibns.getId()).withRel("edit ibns"));
+        this.add(linkTo(IbnsController.class).slash(ibns.getId()).withRel("delete ibns"));
         this.add(linkTo(IbnsController.class).withRel("All IBNSs"));
     }
 }

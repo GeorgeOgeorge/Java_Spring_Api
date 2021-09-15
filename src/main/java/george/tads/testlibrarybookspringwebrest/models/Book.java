@@ -6,8 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.List;
+import java.util.Date;
 
 @Accessors(chain = true)
 @NoArgsConstructor

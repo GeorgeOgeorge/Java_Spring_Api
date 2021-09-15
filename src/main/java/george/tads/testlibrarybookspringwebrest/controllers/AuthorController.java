@@ -46,7 +46,7 @@ public class AuthorController {
         return ResponseEntity.created(URI.create("authors/" + newAuthor.getId())).body(new AuthorResponseDto(newAuthor));
     }
 
-    @PutMapping(value = "edit/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<AuthorResponseDto> update(@PathVariable Long id, @RequestBody Author author) {
        Optional<Author> newAuthor = this.authorService.find(id);
        if(newAuthor.isPresent() && newAuthor.get().getId().equals(author.getId()))
@@ -55,7 +55,7 @@ public class AuthorController {
            return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping(value = "delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         if(this.authorService.find(id).isPresent()) {
             this.authorService.delete(id);

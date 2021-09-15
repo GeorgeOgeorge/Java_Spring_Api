@@ -46,7 +46,7 @@ public class BookController {
         return ResponseEntity.created(URI.create("books/" + newBook.getId())).body(new BookResponseDto(newBook));
     }
 
-    @PutMapping(path = "edit/{id}")
+    @PutMapping(path = "/{id}")
     public ResponseEntity<BookResponseDto> update(@PathVariable Long id, @RequestBody Book book){
         Optional<Book> newBook = this.bookService.find(id);
         if(newBook.isPresent() && newBook.get().getId().equals(book.getId()))
@@ -55,7 +55,7 @@ public class BookController {
             return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping(path = "delete/{id}")
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         if(this.bookService.find(id).isPresent()) {
             this.bookService.delete(id);
@@ -64,7 +64,4 @@ public class BookController {
         else
             return ResponseEntity.notFound().build();
     }
-
-
-
 }

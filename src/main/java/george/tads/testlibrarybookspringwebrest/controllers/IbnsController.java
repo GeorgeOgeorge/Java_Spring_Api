@@ -55,7 +55,7 @@ public class IbnsController {
             return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping(value = "delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         if(this.ibnsService.find(id).isPresent()) {
             this.ibnsService.delete(id);
