@@ -3,9 +3,13 @@ package george.tads.testlibrarybookspringwebrest.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.List;
+
+
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -18,11 +22,13 @@ public class Author {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @Column(name = "nationality")
+    @Column(name = "nationality", length = 30)
     private String nationality;
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.MERGE)
+    private List<Book> books;
 
 }

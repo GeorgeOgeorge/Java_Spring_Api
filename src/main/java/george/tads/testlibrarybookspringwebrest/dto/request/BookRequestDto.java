@@ -1,11 +1,14 @@
 package george.tads.testlibrarybookspringwebrest.dto.request;
 
+import george.tads.testlibrarybookspringwebrest.dto.response.IbnsResponseDto;
 import george.tads.testlibrarybookspringwebrest.models.Author;
 import george.tads.testlibrarybookspringwebrest.models.Book;
 import george.tads.testlibrarybookspringwebrest.models.Ibns;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Optional;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,11 +22,11 @@ public class BookRequestDto {
 
     public Book build() {
         return new Book()
-                .setAuthor(this.author)
                 .setIbns(this.ibns)
                 .setName(this.name)
                 .setYearOfPublishing(this.yearOfPublishing)
-                .setNumberOfPages(this.yearOfPublishing);
+                .setNumberOfPages(this.yearOfPublishing)
+                .setAuthor(this.author);
     }
 
 }

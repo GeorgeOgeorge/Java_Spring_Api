@@ -1,10 +1,12 @@
 package george.tads.testlibrarybookspringwebrest.services;
 
+import george.tads.testlibrarybookspringwebrest.dto.response.BookResponseDto;
 import george.tads.testlibrarybookspringwebrest.models.Book;
 import george.tads.testlibrarybookspringwebrest.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +19,11 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> list() {
-        return this.bookRepository.findAll();
+    public List<BookResponseDto> list() {
+        List<BookResponseDto> booksDto = new ArrayList<>();
+        for(Book book : this.bookRepository.findAll())
+            booksDto.add(new BookResponseDto(book));
+        return booksDto;
     }
 
     public Optional<Book> find(Long id) {
