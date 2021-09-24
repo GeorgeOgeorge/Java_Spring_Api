@@ -32,7 +32,7 @@ public class BookController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<BookResponseDto> find(@PathVariable long id) {
+    public ResponseEntity<BookResponseDto> find(@PathVariable Long id) {
         Optional<Book> newBook = this.bookService.find(id);
         if(newBook.isPresent())
             return ResponseEntity.ok().body(new BookResponseDto(newBook.get()));
